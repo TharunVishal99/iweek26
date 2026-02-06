@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I-WEEK’26</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+html{
+  scroll-behavior:fast;
+}
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:#070707;
+  color:#fff;
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* GOLD VIGNETTE */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at top left, rgba(212,175,55,.35), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(212,175,55,.3), transparent 45%);
+  z-index:-3;
+}
+
+/* BIG GOLD GLOW ORBS */
+.gold-orb{
+  position:fixed;
+  width:420px;
+  height:420px;
+  background:radial-gradient(circle, rgba(212,175,55,.55), rgba(212,175,55,.15), transparent 65%);
+  filter:blur(40px);
+  z-index:-2;
+}
+.orb1{top:-150px; left:-150px;}
+.orb2{bottom:-120px; right:-140px;}
+.orb3{top:45%; left:60%; transform:translate(-50%,-50%); opacity:.5;}
+
+/* ANIMATED GOLD FLOW */
+.gold-flow{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(212,175,55,.08),
+    transparent 70%
+  );
+  animation:flow 12s linear infinite;
+  z-index:-1;
+}
+@keyframes flow{
+  from{background-position:0 0;}
+  to{background-position:1200px 0;}
+}
+
+/* GOLD DUST */
+.dust{
+  position:fixed;
+  inset:0;
+  background-image:
+    radial-gradient(rgba(212,175,55,.4) 1px, transparent 1px);
+  background-size:120px 120px;
+  opacity:.12;
+  z-index:-1;
+}
+
+/* HEADER */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:18px 30px;
+  background:rgba(0,0,0,.78);
+  backdrop-filter:blur(8px);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:100;
+}
+
+header h1{
+  font-family:'Playfair Display',serif;
+  color:#FFD966;
+  font-size:26px;
+  margin:0;
+  white-space:nowrap;
+}
+
+nav{
+  white-space:nowrap;
+}
+
+nav a{
+  margin-left:25px;
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:120px 20px 60px;
+}
+
+.hero h2{
+  font-family:'Playfair Display',serif;
+  font-size:56px;
+  color:#FFD966;
+  margin-bottom:12px;
+}
+
+.hero p{
+  color:#ddd;
+  max-width:650px;
+  line-height:1.8;
+}
+
+/* TIMER */
+.timer{
+  display:flex;
+  gap:25px;
+  margin:50px 0;
+}
+
+.time-box{text-align:center;}
+
+.time{
+  border:1px solid rgba(255,217,102,.6);
+  padding:22px 28px;
+  font-size:30px;
+  color:#FFD966;
+  min-width:95px;
+  box-shadow:0 0 20px rgba(212,175,55,.25);
+}
+
+.label{
+  margin-top:10px;
+  font-size:13px;
+  color:#f3e2a9;
+}
+
+/* EVENTS */
+section{
+  padding:110px 30px;
+  text-align:center;
+}
+
+section h3{
+  font-family:'Playfair Display',serif;
+  font-size:44px;
+  color:#FFD966;
+  margin-bottom:55px;
+}
+
+.events{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:32px;
+}
+
+.event-card{
+  border:1px solid rgba(255,217,102,.45);
+  padding:42px 30px;
+  background:rgba(0,0,0,.6);
+  transition:.4s;
+  box-shadow:0 0 25px rgba(212,175,55,.15);
+}
+.event-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 0 35px rgba(212,175,55,.4);
+}
+
+.event-card h4{
+  color:#FFD966;
+  font-size:22px;
+  margin-bottom:16px;
+}
+
+.event-card a{
+  display:inline-block;
+  margin-top:22px;
+  color:#FFD966;
+  text-decoration:none;
+  border:1px solid #FFD966;
+  padding:11px 28px;
+  font-size:14px;
+}
+
+/* FADE ANIMATION */
+.fade{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  header h1{font-size:22px;}
+  .hero h2{font-size:44px;}
+  .timer{flex-wrap:wrap; justify-content:center;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="gold-orb orb1"></div>
+<div class="gold-orb orb2"></div>
+<div class="gold-orb orb3"></div>
+<div class="gold-flow"></div>
+<div class="dust"></div>
+
+<header>
+  <h1>I-WEEK’26</h1>
+  </header>
+
+<section class="hero fade">
+  <h2>I-WEEK’26</h2>
+
+  <div class="timer">
+    <div class="time-box">
+      <div class="time" id="days">00</div>
+      <div class="label">Days</div>
+    </div>
+    <div class="time-box">
+      <div class="time" id="hours">00</div>
+      <div class="label">Hours</div>
+    </div>
+    <div class="time-box">
+      <div class="time" id="minutes">00</div>
+      <div class="label">Minutes</div>
+    </div>
+    <div class="time-box">
+      <div class="time" id="seconds">00</div>
+      <div class="label">Seconds</div>
+    </div>
+  </div>
+</section>
+ 
+<section class="hero fade">
+<section id="about" style="max-width:1000px;margin:auto;padding:0 20px 60px;text-align:center;">
+  <h2 class="events">ABOUT</h2>
+<h3 class="events">I-WEEK'26</h3>
+<p>
+I-WEEK’26 is a power-packed four-day mega celebration hosted by the Innopreneurs Club of PSG College of Arts & Science, where innovation meets creativity and ideas come alive. From February 23 to 26, 2026, the campus transforms into a buzzing hub of challenges, collaborations, and exciting experiences that spark entrepreneurial spirit, inspire fresh thinking, and bring passionate minds together.
+The valediction ceremony will take place on 26th February, 2026.</p>
+</section>
+
+<section id="events" class="fade">
+  <h3>Events</h3>
+
+  <div class="events">
+
+    <div class="event-card">
+      <h4>IPL AUCTION</h4>
+      <p>Strategic bidding, budget management and team building simulation.</p>
+      <a href="ipl-auction.html">View Event</a>
+    </div>
+
+    <div class="event-card">
+      <h4>MODEL UNITED NATIONS (MUN)</h4>
+      <p>Diplomacy, debate and global policy discussions.</p>
+      <a href="mun.html">View Event</a>
+    </div>
+
+    <div class="event-card">
+      <h4>I-QUIZ</h4>
+      <p>Test your knowledge, speed and accuracy.</p>
+      <a href="quiz.html">View Event</a>
+    </div>
+
+    <div class="event-card">
+      <h4>MONOPOLY</h4>
+      <p>Business strategy and financial decision-making challenge.</p>
+      <a href="monopoly.html">View Event</a>
+    </div>
+
+    <div class="event-card">
+      <h4>LINK UP</h4>
+      <p>Logical thinking and fast-paced connections challenge.</p>
+      <a href="connections.html">View Event</a>
+    </div>
+
+    <div class="event-card">
+      <h4>KINOZYNTRA 2.0</h4>
+      <p>Step into a movie-themed fun fiesta packed with games, challenges, and cinematic surprises straight out of your favorite films.</p>
+      <a href="kinozyntra.html">View Event</a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+const eventDate = new Date("Feb 23, 2026 09:30:00").getTime();
+setInterval(()=>{
+  const now = new Date().getTime();
+  const d = eventDate - now;
+  days.innerText = Math.floor(d/(1000*60*60*24));
+  hours.innerText = Math.floor((d%(1000*60*60*24))/(1000*60*60));
+  minutes.innerText = Math.floor((d%(1000*60*60))/(1000*60));
+  seconds.innerText = Math.floor((d%(1000*60))/1000);
+},1000);
+
+document.querySelectorAll('.fade').forEach(el=>{
+  window.addEventListener('scroll',()=>{
+    if(el.getBoundingClientRect().top < window.innerHeight-120){
+      el.classList.add('show');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
